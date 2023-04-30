@@ -3,8 +3,6 @@ jumpgameWindow = nil
 JumpGame = {}
 
 function init()
-  -- jumpgameWindow = g_ui.displayUI('jumpgame.otui')
-  -- jumpgameButton = modules.client_topmenu.addLeftButton('jumpgameButton', tr('Question7'), '/images/topbuttons/inventory', toggle, true)
   connect(g_game, { onLogin = JumpGame.create,
   onGameEnd = JumpGame.destroy })
 
@@ -59,18 +57,4 @@ function JumpGame.moveLeftHandler(bool)
     end
     JumpGame.reset()
   end
-end
-
-function toggle()
-if jumpgameButton:isOn() then
-  jumpgameButton:setOn(false)
-  jumpgameWindow:hide()
-  JumpGame.moveLeftHandler(false)
-else
-  jumpgameButton:setOn(true)
-  jumpgameWindow:show()
-  jumpgameWindow:raise()
-  jumpgameWindow:focus()
-  JumpGame.moveLeftHandler(true)
-end
 end
